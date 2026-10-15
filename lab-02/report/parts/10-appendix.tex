@@ -1,0 +1,14 @@
+\clearpage
+\ssr{ПРИЛОЖЕНИЕ А}
+\begin{center}
+	\large\bfseries Листинги программы
+\end{center}
+
+% листинги приложения нумеруются А.1, А.2, ...
+\setcounter{lstlisting}{0}
+\renewcommand{\thelstlisting}{А.\arabic{lstlisting}}
+
+% листинги готовит gen-listings.py: части в minipage не разрываются между страницами
+\input{listings/tests.tex}
+
+\input{listings/measure.tex}

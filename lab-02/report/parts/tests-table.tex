@@ -1,0 +1,47 @@
+\begin{table}[H]
+\caption{Функциональные тесты}
+\label{tbl:tests}
+\centering
+\small
+\setlength{\arraycolsep}{2.5pt}
+\begin{tblr}{
+  width = \linewidth,
+  colspec = {Q[c,m] X[1.5,l,m] X[1.7,c,m] X[1.7,c,m] X[1.7,c,m] Q[c,m]},
+  colsep = 3pt,
+  hlines, vlines,
+  row{1} = {font=\bfseries},
+}
+№ & Описание теста & $A$ & $B$ & Ожидаемый результат & Получ. \\
+1 & Матрицы $1 \times 1$ & $(3)$ & $(-4)$ & $(-12)$ & Совп. \\
+2 & Умножение на единичную матрицу $E$ слева и справа &
+  $\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}$ & $E_{3 \times 3}$ &
+  $AE = EA = A$ & Совп. \\
+3 & Умножение на нулевую матрицу &
+  $\begin{pmatrix}1&2\\3&4\end{pmatrix}$ & $\begin{pmatrix}0&0\\0&0\end{pmatrix}$ &
+  $\begin{pmatrix}0&0\\0&0\end{pmatrix}$ & Совп. \\
+4 & Квадратные $2 \times 2$, чётное $m$ &
+  $\begin{pmatrix}1&2\\3&4\end{pmatrix}$ & $\begin{pmatrix}5&6\\7&8\end{pmatrix}$ &
+  $\begin{pmatrix}19&22\\43&50\end{pmatrix}$ & Совп. \\
+5 & Квадратные $3 \times 3$, нечётное $m$ &
+  $\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}$ & $\begin{pmatrix}9&8&7\\6&5&4\\3&2&1\end{pmatrix}$ &
+  $\begin{pmatrix}30&24&18\\84&69&54\\138&114&90\end{pmatrix}$ & Совп. \\
+6 & Прямоугольные $2 \times 3$ и $3 \times 2$, нечётное $m$ &
+  $\begin{pmatrix}1&2&3\\4&5&6\end{pmatrix}$ & $\begin{pmatrix}7&8\\9&10\\11&12\end{pmatrix}$ &
+  $\begin{pmatrix}58&64\\139&154\end{pmatrix}$ & Совп. \\
+7 & Прямоугольные $3 \times 2$ и $2 \times 4$, чётное $m$ &
+  $\begin{pmatrix}1&2\\3&4\\5&6\end{pmatrix}$ & $\begin{pmatrix}1&2&3&4\\5&6&7&8\end{pmatrix}$ &
+  $\begin{pmatrix}11&14&17&20\\23&30&37&44\\35&46&57&68\end{pmatrix}$ & Совп. \\
+8 & Строка на столбец &
+  $\begin{pmatrix}1&2&3&4\end{pmatrix}$ & $\begin{pmatrix}1&2&3&4\end{pmatrix}^T$ &
+  $(30)$ & Совп. \\
+9 & Столбец на строку, $m = 1$ &
+  $\begin{pmatrix}1&2&3\end{pmatrix}^T$ & $\begin{pmatrix}4&5\end{pmatrix}$ &
+  $\begin{pmatrix}4&5\\8&10\\12&15\end{pmatrix}$ & Совп. \\
+10 & Отрицательные элементы &
+  $\begin{pmatrix}-1&2\\3&-4\end{pmatrix}$ & $\begin{pmatrix}-5&-6\\7&8\end{pmatrix}$ &
+  $\begin{pmatrix}19&22\\-43&-50\end{pmatrix}$ & Совп. \\
+11 & Случайные матрицы, $m = \overline{1, 6}$, $n, q \in [1; 5]$ &
+  Случайная $n \times m$ & Случайная $m \times q$ &
+  Результат стандартного алгоритма & Совп. \\
+\end{tblr}
+\end{table}
