@@ -14,7 +14,8 @@ struct App {
         (matrixMultiply, "Классичесое умножение матриц", "classic"),
         (winogradMultiply, "Алгоритм Винограда без оптимизаций", "winograd"),
         (winogradMultiplyShift, "Алгоритм Винограда + \">>1\"", "winograd_shift"),
-        (winogradMultiplyAddAsigned, "Алгоритм Винограда + \"+=\"", "winograd_add_assigned")
+        (winogradMultiplyAddAsigned, "Алгоритм Винограда + \"+=\"", "winograd_add_assigned"),
+        (winogradMultiplyShiftAddAsigned, "Алгоритм Винограда + \">>1\" + \"+=\"", "winograd_shift_add_assigned")
     ]
 
     var selectedAlgorithm: Algorithm

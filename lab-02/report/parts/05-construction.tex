@@ -77,7 +77,7 @@
 	\item оптимизация Б~--- накопление сумм вида $x = x + y$ заменяется составным оператором присваивания $x \mathrel{+}= y$.
 \end{itemize}
 
-Каждая оптимизация применяется к алгоритму Винограда отдельно, что даёт две оптимизированные реализации.
+Оптимизации применяются к алгоритму Винограда как по отдельности, так и совместно, что даёт три оптимизированные реализации.
 
 \subsubsection{Реализация с оптимизацией А}
 В данной реализации граница циклов по индексу пары $m / 2$ вычисляется побитовым сдвигом вправо $m \gg 1$: для неотрицательного целого $m$ оба выражения дают одинаковый результат. Сдвиг применяется во всех трёх циклах по индексу пары: при вычислении $mulH$, $mulV$ и в основном цикле. Схема алгоритма приведена на рисунках~\ref{img:winograd-shift-1}--\ref{img:winograd-shift-3}.
@@ -125,4 +125,28 @@
 	\includegraphics[scale=0.82]{image/algo/winograd-add/3.pdf}
 	\caption{Схема алгоритма Винограда с оптимизацией Б, лист 3}
 	\label{img:winograd-add-3}
+\end{figure}
+
+\subsubsection{Реализация с оптимизациями А и Б}
+В данной реализации обе оптимизации применяются совместно: граница циклов по индексу пары вычисляется побитовым сдвигом $m \gg 1$, а все накопления сумм выполняются составным оператором присваивания $x \mathrel{+}= y$. Схема алгоритма приведена на рисунках~\ref{img:winograd-shift-add-1}--\ref{img:winograd-shift-add-3}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.82]{image/algo/winograd-shift-add/1.pdf}
+	\caption{Схема алгоритма Винограда с оптимизациями А и Б, лист 1}
+	\label{img:winograd-shift-add-1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.82]{image/algo/winograd-shift-add/2.pdf}
+	\caption{Схема алгоритма Винограда с оптимизациями А и Б, лист 2}
+	\label{img:winograd-shift-add-2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.82]{image/algo/winograd-shift-add/3.pdf}
+	\caption{Схема алгоритма Винограда с оптимизациями А и Б, лист 3}
+	\label{img:winograd-shift-add-3}
 \end{figure}

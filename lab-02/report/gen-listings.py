@@ -35,6 +35,8 @@ LISTINGS = {
                        "Алгоритм Винограда с оптимизацией А", ["// Основная матрица"]),
     "winograd-add": ("Sources/MatrixMultiply/WinogradMultiplyAddAsigned.swift",
                      "Алгоритм Винограда с оптимизацией Б", ["// Основная матрица"]),
+    "winograd-shift-add": ("Sources/MatrixMultiply/WinogradMultiplyShiftAddAsigned.swift",
+                           "Алгоритм Винограда с оптимизациями А и Б", ["// Основная матрица"]),
     "tests": ("Tests/MatrixMultiplyTests/MatrixMultiplyTests.swift",
               "Модульные тесты реализаций алгоритмов",
               ['@Test("Умножение на единичную', '@Test("Прямоугольные 2x3', '@Test("Совпадение']),

@@ -13,6 +13,7 @@ let algorithms: [NamedAlgorithm] = [
     NamedAlgorithm(name: "#*Виноград*)", algo: winogradMultiply),
     NamedAlgorithm(name: "#*Виноград*) >>1", algo: winogradMultiplyShift),
     NamedAlgorithm(name: "#*Виноград*) +=", algo: winogradMultiplyAddAsigned),
+    NamedAlgorithm(name: "#*Виноград*) >>1 #*и*) +=", algo: winogradMultiplyShiftAddAsigned),
 ]
 
 @Suite("#*Умножение матриц*)")

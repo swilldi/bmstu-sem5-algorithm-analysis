@@ -1,4 +1,4 @@
-<mxfile pages="10">
+<mxfile pages="13">
   <diagram name="standard" id="lab02-standard">
     <mxGraphModel dx="643" dy="526" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -777,6 +777,244 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="winograd-add-3-25" edge="1" parent="winograd-add-3-1" source="winograd-add-3-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" value="Нет">
+          <mxGeometry relative="1" x="-0.93" as="geometry">
+            <mxPoint y="-12" as="offset" />
+            <Array as="points">
+              <mxPoint x="540" y="400" />
+              <mxPoint x="540" y="910" />
+              <mxPoint x="360" y="910" />
+            </Array>
+            <mxPoint x="360" y="910" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="winograd-shift-add-1" id="lab02-winograd-shift-add-1">
+    <mxGraphModel dx="742" dy="607" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="winograd-shift-add-1-0" />
+        <mxCell id="winograd-shift-add-1-1" parent="winograd-shift-add-1-0" />
+        <mxCell id="winograd-shift-add-1-2" parent="winograd-shift-add-1-1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fontSize=13;" value="Начало" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-1-3" parent="winograd-shift-add-1-1" style="whiteSpace=wrap;html=1;fontSize=13;" value="n = число строк a,&lt;br&gt;m = число столбцов a,&lt;br&gt;q = число столбцов b" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-1-4" edge="1" parent="winograd-shift-add-1-1" source="winograd-shift-add-1-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="winograd-shift-add-1-3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-1-5" parent="winograd-shift-add-1-1" style="whiteSpace=wrap;html=1;fontSize=13;" value="c = нулевая матрица&lt;br&gt;размера n × q" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-1-6" edge="1" parent="winograd-shift-add-1-1" source="winograd-shift-add-1-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="winograd-shift-add-1-5" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-1-7" parent="winograd-shift-add-1-1" style="whiteSpace=wrap;html=1;fontSize=13;" value="mulH = массив из n нулей" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-1-8" edge="1" parent="winograd-shift-add-1-1" source="winograd-shift-add-1-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="winograd-shift-add-1-7" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-1-9" parent="winograd-shift-add-1-1" style="shape=loopLimit;whiteSpace=wrap;html=1;fontSize=13;" value="&lt;div&gt;Цикл i,&lt;/div&gt;&lt;div&gt;от 0 до n, шаг 1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-1-10" edge="1" parent="winograd-shift-add-1-1" source="winograd-shift-add-1-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="winograd-shift-add-1-9" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-1-11" parent="winograd-shift-add-1-1" style="shape=loopLimit;whiteSpace=wrap;html=1;fontSize=13;" value="&lt;div&gt;Цикл j,&lt;/div&gt;&lt;div&gt;от 0 до m &gt;&gt; 1, шаг 1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-1-12" edge="1" parent="winograd-shift-add-1-1" source="winograd-shift-add-1-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="winograd-shift-add-1-11" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-1-13" parent="winograd-shift-add-1-1" style="whiteSpace=wrap;html=1;fontSize=13;" value="mulH[i] +=&lt;br&gt;a[i][2*j] * a[i][2*j + 1]" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-1-14" edge="1" parent="winograd-shift-add-1-1" source="winograd-shift-add-1-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="winograd-shift-add-1-13" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-1-15" parent="winograd-shift-add-1-1" style="shape=loopLimit;whiteSpace=wrap;html=1;fontSize=13;flipV=1;legacyAnchorPoints=0;" value="Цикл j" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-1-16" edge="1" parent="winograd-shift-add-1-1" source="winograd-shift-add-1-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="winograd-shift-add-1-15" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-1-17" parent="winograd-shift-add-1-1" style="shape=loopLimit;whiteSpace=wrap;html=1;fontSize=13;flipV=1;legacyAnchorPoints=0;" value="Цикл i" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="740" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-1-18" edge="1" parent="winograd-shift-add-1-1" source="winograd-shift-add-1-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="winograd-shift-add-1-17" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-1-19" parent="winograd-shift-add-1-1" style="whiteSpace=wrap;html=1;fontSize=13;" value="mulV = массив из q нулей" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="830" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-1-20" edge="1" parent="winograd-shift-add-1-1" source="winograd-shift-add-1-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="winograd-shift-add-1-19" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-1-21" parent="winograd-shift-add-1-1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=13;" value="А" vertex="1">
+          <mxGeometry height="50" width="50" x="335" y="920" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-1-22" edge="1" parent="winograd-shift-add-1-1" source="winograd-shift-add-1-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="winograd-shift-add-1-21" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="winograd-shift-add-2" id="lab02-winograd-shift-add-2">
+    <mxGraphModel dx="689" dy="564" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="winograd-shift-add-2-0" />
+        <mxCell id="winograd-shift-add-2-1" parent="winograd-shift-add-2-0" />
+        <mxCell id="winograd-shift-add-2-2" parent="winograd-shift-add-2-1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=13;" value="А" vertex="1">
+          <mxGeometry height="50" width="50" x="335" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-2-3" parent="winograd-shift-add-2-1" style="shape=loopLimit;whiteSpace=wrap;html=1;fontSize=13;" value="&lt;div&gt;Цикл i,&lt;/div&gt;&lt;div&gt;от 0 до q, шаг 1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-2-4" edge="1" parent="winograd-shift-add-2-1" source="winograd-shift-add-2-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="winograd-shift-add-2-3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-2-5" parent="winograd-shift-add-2-1" style="shape=loopLimit;whiteSpace=wrap;html=1;fontSize=13;" value="&lt;div&gt;Цикл j,&lt;/div&gt;&lt;div&gt;от 0 до m &gt;&gt; 1, шаг 1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-2-6" edge="1" parent="winograd-shift-add-2-1" source="winograd-shift-add-2-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="winograd-shift-add-2-5" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-2-7" parent="winograd-shift-add-2-1" style="whiteSpace=wrap;html=1;fontSize=13;" value="mulV[i] +=&lt;br&gt;b[2*j][i] * b[2*j + 1][i]" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-2-8" edge="1" parent="winograd-shift-add-2-1" source="winograd-shift-add-2-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="winograd-shift-add-2-7" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-2-9" parent="winograd-shift-add-2-1" style="shape=loopLimit;whiteSpace=wrap;html=1;fontSize=13;flipV=1;legacyAnchorPoints=0;" value="Цикл j" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-2-10" edge="1" parent="winograd-shift-add-2-1" source="winograd-shift-add-2-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="winograd-shift-add-2-9" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-2-11" parent="winograd-shift-add-2-1" style="shape=loopLimit;whiteSpace=wrap;html=1;fontSize=13;flipV=1;legacyAnchorPoints=0;" value="Цикл i" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-2-12" edge="1" parent="winograd-shift-add-2-1" source="winograd-shift-add-2-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="winograd-shift-add-2-11" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-2-13" parent="winograd-shift-add-2-1" style="shape=loopLimit;whiteSpace=wrap;html=1;fontSize=13;" value="&lt;div&gt;Цикл i,&lt;/div&gt;&lt;div&gt;от 0 до n, шаг 1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-2-14" edge="1" parent="winograd-shift-add-2-1" source="winograd-shift-add-2-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="winograd-shift-add-2-13" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-2-15" parent="winograd-shift-add-2-1" style="shape=loopLimit;whiteSpace=wrap;html=1;fontSize=13;" value="&lt;div&gt;Цикл j,&lt;/div&gt;&lt;div&gt;от 0 до q, шаг 1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-2-16" edge="1" parent="winograd-shift-add-2-1" source="winograd-shift-add-2-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="winograd-shift-add-2-15" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-2-17" parent="winograd-shift-add-2-1" style="whiteSpace=wrap;html=1;fontSize=13;" value="c[i][j] = -mulH[i] - mulV[j]" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="730" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-2-18" edge="1" parent="winograd-shift-add-2-1" source="winograd-shift-add-2-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="winograd-shift-add-2-17" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-2-19" parent="winograd-shift-add-2-1" style="shape=loopLimit;whiteSpace=wrap;html=1;fontSize=13;" value="&lt;div&gt;Цикл k,&lt;/div&gt;&lt;div&gt;от 0 до m &gt;&gt; 1, шаг 1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-2-20" edge="1" parent="winograd-shift-add-2-1" source="winograd-shift-add-2-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="winograd-shift-add-2-19" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-2-21" parent="winograd-shift-add-2-1" style="whiteSpace=wrap;html=1;fontSize=13;" value="c[i][j] +=&lt;br&gt;(a[i][2*k] + b[2*k + 1][j]) *&lt;br&gt;(a[i][2*k + 1] + b[2*k][j])" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-2-22" edge="1" parent="winograd-shift-add-2-1" source="winograd-shift-add-2-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="winograd-shift-add-2-21" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-2-23" parent="winograd-shift-add-2-1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=13;" value="Б" vertex="1">
+          <mxGeometry height="50" width="50" x="335" y="1000" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-2-24" edge="1" parent="winograd-shift-add-2-1" source="winograd-shift-add-2-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="winograd-shift-add-2-23" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="winograd-shift-add-3" id="lab02-winograd-shift-add-3">
+    <mxGraphModel dx="689" dy="564" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="winograd-shift-add-3-0" />
+        <mxCell id="winograd-shift-add-3-1" parent="winograd-shift-add-3-0" />
+        <mxCell id="winograd-shift-add-3-2" parent="winograd-shift-add-3-1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=13;" value="Б" vertex="1">
+          <mxGeometry height="50" width="50" x="335" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-3-3" parent="winograd-shift-add-3-1" style="shape=loopLimit;whiteSpace=wrap;html=1;fontSize=13;flipV=1;legacyAnchorPoints=0;" value="Цикл k" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-3-4" edge="1" parent="winograd-shift-add-3-1" source="winograd-shift-add-3-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="winograd-shift-add-3-3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-3-5" parent="winograd-shift-add-3-1" style="shape=loopLimit;whiteSpace=wrap;html=1;fontSize=13;flipV=1;legacyAnchorPoints=0;" value="Цикл j" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-3-6" edge="1" parent="winograd-shift-add-3-1" source="winograd-shift-add-3-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="winograd-shift-add-3-5" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-3-7" parent="winograd-shift-add-3-1" style="shape=loopLimit;whiteSpace=wrap;html=1;fontSize=13;flipV=1;legacyAnchorPoints=0;" value="Цикл i" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-3-8" edge="1" parent="winograd-shift-add-3-1" source="winograd-shift-add-3-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="winograd-shift-add-3-7" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-3-9" parent="winograd-shift-add-3-1" style="rhombus;whiteSpace=wrap;html=1;shapeInside=1;fontSize=13;" value="m % 2 = 1" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-3-10" edge="1" parent="winograd-shift-add-3-1" source="winograd-shift-add-3-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="winograd-shift-add-3-9" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-3-11" parent="winograd-shift-add-3-1" style="shape=loopLimit;whiteSpace=wrap;html=1;fontSize=13;" value="&lt;div&gt;Цикл i,&lt;/div&gt;&lt;div&gt;от 0 до n, шаг 1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-3-12" edge="1" parent="winograd-shift-add-3-1" source="winograd-shift-add-3-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="winograd-shift-add-3-11" value="Да">
+          <mxGeometry relative="1" x="-0.4" as="geometry">
+            <mxPoint x="15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="winograd-shift-add-3-13" parent="winograd-shift-add-3-1" style="shape=loopLimit;whiteSpace=wrap;html=1;fontSize=13;" value="&lt;div&gt;Цикл j,&lt;/div&gt;&lt;div&gt;от 0 до q, шаг 1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-3-14" edge="1" parent="winograd-shift-add-3-1" source="winograd-shift-add-3-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="winograd-shift-add-3-13" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-3-15" parent="winograd-shift-add-3-1" style="whiteSpace=wrap;html=1;fontSize=13;" value="c[i][j] +=&lt;br&gt;a[i][m - 1] * b[m - 1][j]" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-3-16" edge="1" parent="winograd-shift-add-3-1" source="winograd-shift-add-3-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="winograd-shift-add-3-15" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-3-17" parent="winograd-shift-add-3-1" style="shape=loopLimit;whiteSpace=wrap;html=1;fontSize=13;flipV=1;legacyAnchorPoints=0;" value="Цикл j" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="730" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-3-18" edge="1" parent="winograd-shift-add-3-1" source="winograd-shift-add-3-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="winograd-shift-add-3-17" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-3-19" parent="winograd-shift-add-3-1" style="shape=loopLimit;whiteSpace=wrap;html=1;fontSize=13;flipV=1;legacyAnchorPoints=0;" value="Цикл i" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-3-20" edge="1" parent="winograd-shift-add-3-1" source="winograd-shift-add-3-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="winograd-shift-add-3-19" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-3-21" parent="winograd-shift-add-3-1" style="whiteSpace=wrap;html=1;fontSize=13;" value="вернуть c" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="940" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-3-22" edge="1" parent="winograd-shift-add-3-1" source="winograd-shift-add-3-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="winograd-shift-add-3-21" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-3-23" parent="winograd-shift-add-3-1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fontSize=13;" value="Конец" vertex="1">
+          <mxGeometry height="60" width="240" x="240" y="1030" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-3-24" edge="1" parent="winograd-shift-add-3-1" source="winograd-shift-add-3-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="winograd-shift-add-3-23" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="winograd-shift-add-3-25" edge="1" parent="winograd-shift-add-3-1" source="winograd-shift-add-3-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" value="Нет">
           <mxGeometry relative="1" x="-0.93" as="geometry">
             <mxPoint y="-12" as="offset" />
             <Array as="points">

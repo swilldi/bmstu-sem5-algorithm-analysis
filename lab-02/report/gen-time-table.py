@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 """Строит parts/time-table.tex из ../TimeTestResult/*.csv (время в мс).
 
+Две таблицы: для чётных и для нечётных размеров матриц.
+
 Использование: python3 gen-time-table.py
 """
 import csv
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-ALGOS = ["classic", "winograd", "winograd_shift", "winograd_add_assigned"]
+ALGOS = ["classic", "winograd", "winograd_shift", "winograd_add_assigned",
+         "winograd_shift_add_assigned"]
+HEADER = r"$N$ & Станд. & Виногр. & Опт. А & Опт. Б & Опт. А и Б \\"
 
 
 def load(name):
@@ -15,8 +19,25 @@ def load(name):
         return {int(r["size"]): int(r["time_ns"]) for r in csv.DictReader(f)}
 
 
-def us(ns):
+def ms(ns):
     return f"{ns / 1e6:.2f}".replace(".", "{,}")
+
+
+def table(sizes, caption, label):
+    rows = "\n".join(f"{n} & " + " & ".join(ms(d[n]) for d in data) + r" \\ \hline"
+                     for n in sizes)
+    return rf"""\begin{{table}}[H]
+\caption{{{caption}}}
+\label{{{label}}}
+\centering
+\begin{{tabular}}{{|c|c|c|c|c|c|}}
+\hline
+{HEADER}
+\hline
+{rows}
+\end{{tabular}}
+\end{{table}}
+"""
 
 
 data = [load(a) for a in ALGOS]
@@ -24,27 +45,8 @@ sizes = sorted(data[0])
 even = [n for n in sizes if n % 2 == 0]
 odd = [n for n in sizes if n % 2 == 1]
 
-rows = []
-for e, o in zip(even, odd):
-    rows.append(f"{e} & " + " & ".join(us(d[e]) for d in data)
-                + f" & {o} & " + " & ".join(us(d[o]) for d in data) + r" \\")
-
-table = r"""\begin{table}[H]
-\caption{Процессорное время умножения квадратных матриц, мс}
-\label{tbl:time}
-\centering
-\small
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{|c|c|c|c|c||c|c|c|c|c|}
-\hline
-\multicolumn{5}{|c||}{\bfseries Чётные размеры} & \multicolumn{5}{c|}{\bfseries Нечётные размеры} \\
-\hline
-$N$ & Станд. & Виногр. & Опт. А & Опт. Б & $N$ & Станд. & Виногр. & Опт. А & Опт. Б \\
-\hline
-""" + "\n".join(rows) + r"""
-\hline
-\end{tabular}
-\end{table}
-"""
-(ROOT / "parts" / "time-table.tex").write_text(table)
-print(f"parts/time-table.tex: {len(rows)} строк")
+text = (table(even, "Процессорное время умножения квадратных матриц чётного размера, мс", "tbl:time")
+        + "\n"
+        + table(odd, "Процессорное время умножения квадратных матриц нечётного размера, мс", "tbl:time-odd"))
+(ROOT / "parts" / "time-table.tex").write_text(text)
+print(f"parts/time-table.tex: {len(even)} + {len(odd)} строк")
