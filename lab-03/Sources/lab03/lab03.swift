@@ -1,5 +1,4 @@
-//
-//  main.swift
+//  lab03.swift
 //  lab-03
 //
 //  Created by Dmitriy Dudyrev on 29.10.2026.
@@ -17,7 +16,44 @@
 import Foundation
 import Algorithms
 
-let k = 3
-let s = 15
-let r = countNumbersBySumDigits(sumTarget: s, digitsCount: k)
+@main
+struct App {
+//    var s: Int?
+//    var k: Int?
+    
+    var running = true
+    func run() {
+        while running {
+            guard let s = readNumer("Введите s: ") else {
+                continue
+            }
+            
+            guard let k = readNumer("Введите k: ") else {
+                continue
+            }
+            
+            showResult(s: s, k: k)
+        }
+    }
+    
+    func showResult(s: Int, k: Int) {
+        let resultMatrix = countNumbersBySumDigitsMatrix(sumTarget: s, digitsCount: k)
+        printMatrixOfCounts(resultMatrix)
+        print("Количество \(k)-значных чисел, сумма цифр которых \(s) -- \(resultMatrix[k][s])")
+    }
+    
+    func readNumer(_ msg: String?) -> Int? {
+        if let msg {
+            print(msg, terminator: "")
+        }
+        guard let numStr = readLine() else { return nil }
+        return Int(numStr)
+    }
+    
+    static func main() {
+        let app = App()
+//        app.run()
+        app.showResult(s: 15, k: 5)
+    }
+}
 
