@@ -5,7 +5,7 @@
 //  Created by Dmitriy on 15.10.2026.
 //
 
-package typealias MatrixMultiplyFuncition = (Matrix, Matrix) -> Matrix
+package typealias MatrixMultiplyFunction = (Matrix, Matrix) -> Matrix
 package typealias Matrix = [[Int]]
 
 

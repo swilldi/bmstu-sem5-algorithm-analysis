@@ -33,9 +33,9 @@ LISTINGS = {
                  "Алгоритм Винограда", ["// Основная матрица"]),
     "winograd-shift": ("Sources/MatrixMultiply/WinogradMultiplyShift.swift",
                        "Алгоритм Винограда с оптимизацией А", ["// Основная матрица"]),
-    "winograd-add": ("Sources/MatrixMultiply/WinogradMultiplyAddAsigned.swift",
+    "winograd-add": ("Sources/MatrixMultiply/WinogradMultiplyAddAssigned.swift",
                      "Алгоритм Винограда с оптимизацией Б", ["// Основная матрица"]),
-    "winograd-shift-add": ("Sources/MatrixMultiply/WinogradMultiplyShiftAddAsigned.swift",
+    "winograd-shift-add": ("Sources/MatrixMultiply/WinogradMultiplyShiftAddAssigned.swift",
                            "Алгоритм Винограда с оптимизациями А и Б", ["// Основная матрица"]),
     "tests": ("Tests/MatrixMultiplyTests/MatrixMultiplyTests.swift",
               "Модульные тесты реализаций алгоритмов",
@@ -74,24 +74,10 @@ def clean(lines):
 CYRILLIC = re.compile(r"[А-Яа-яЁё«»—]+(?:[ ,.:;!?—–-]+[А-Яа-яЁё«»—]+)*")
 
 
-def comment_start(line):
-    """Позиция начала комментария // вне строкового литерала или len(line)."""
-    in_str = False
-    for i, ch in enumerate(line):
-        if ch == '"':
-            in_str = not in_str
-        elif not in_str and line.startswith("//", i):
-            return i
-    return len(line)
-
-
 def escape_cyrillic(line):
-    start = comment_start(line)
-
     def wrap(m):
-        # комментарии в листингах курсивные, кириллица в них тоже
-        text = m.group(0)
-        return "#*{\\itshape " + text + "}*)" if m.start() >= start else "#*" + text + "*)"
+        # курсив не используется (ГОСТ 7.32-2017, п. 6.1.1)
+        return "#*" + m.group(0) + "*)"
 
     return CYRILLIC.sub(wrap, line)
 
@@ -136,8 +122,9 @@ for name, (src, caption, markers) in LISTINGS.items():
         elif i == 1:
             opts = f"caption={{{caption}, лист 1}}, label={{lst:{name}}}"
         else:
-            opts = f"title={{\\lstlistingname~\\ref{{lst:{name}}}, лист {i}}}"
-        blocks.append("\\noindent\\begin{minipage}{\\linewidth}\n"
+            # нумерация строк продолжается с предыдущей части
+            opts = f"title={{\\lstlistingname~\\ref{{lst:{name}}}, лист {i}}}, firstnumber=last"
+        blocks.append("\\noindent\\begin{minipage}{\\dimexpr\\linewidth-\\rightskip\\relax}\n"
                       f"\\lstinputlisting[{opts}]{{{file}}}\n"
                       "\\end{minipage}\n")
     # листинг на \input{listings/<имя>.tex}: части в minipage не разрываются

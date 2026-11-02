@@ -1,0 +1,106 @@
+% !TEX root = report.tex
+% Настройки ЛР № 2. Подключаются после общей преамбулы ../../shared/preamble.tex
+% (неизменённый снимок v2 навыка gost-report); общие настройки здесь не дублируются.
+
+\hypersetup{
+    pdftitle={Сравнительный анализ алгоритмов умножения матриц},
+    pdfauthor={Дудырев Д.С.}
+}
+
+\usepackage{amssymb}
+\usepackage{tabularray}
+\usepackage{multirow}
+
+% столбцы заданной доли ширины строки: C — по центру, L — по левому краю
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{\dimexpr#1\linewidth-2\tabcolsep\relax}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}m{\dimexpr#1\linewidth-2\tabcolsep\relax}}
+
+% числа в таблицах выравниваются по десятичной запятой (столбцы типа S)
+\usepackage{siunitx}
+\sisetup{output-decimal-marker={,}, group-separator={\,}, group-minimum-digits=4}
+
+\graphicspath{{image/}}
+
+\addto\captionsrussian{\renewcommand{\refname}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}}
+
+% заголовки третьего и четвёртого уровней (v2 оформляет только \section и \subsection)
+\titleformat{\subsubsection}[hang]
+    {\normalfont\normalsize\bfseries\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000}
+    {\hspace*{1.25cm}\thesubsubsection}{\fontdimen2\font}{}
+\titlespacing*{\subsubsection}{0pt}
+    {3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\setcounter{secnumdepth}{4}
+\titleformat{\paragraph}[hang]
+    {\normalfont\normalsize\bfseries\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000}
+    {\hspace*{1.25cm}\theparagraph}{\fontdimen2\font}{}
+\titlespacing*{\paragraph}{0pt}
+    {3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+
+% ---- Строгое соответствие ГОСТ 7.32-2017 (проект algorithm-analysis-2) ----
+% п. 6.8.1: выше и ниже каждой формулы не менее одной свободной строки
+% (v2 убирает эти отбивки; \normalsize переустанавливает их, поэтому настройка
+% добавляется и в \normalsize, и в начало документа)
+\makeatletter
+\newcommand{\gostdisplayskips}{%
+    \setlength{\abovedisplayskip}{\baselineskip}%
+    \setlength{\abovedisplayshortskip}{\baselineskip}%
+    \setlength{\belowdisplayskip}{\baselineskip}%
+    \setlength{\belowdisplayshortskip}{\baselineskip}}
+\g@addto@macro\normalsize{\gostdisplayskips}
+\AtBeginDocument{\gostdisplayskips}
+\makeatother
+% п. 6.8.2: пояснение начинается со слова «где» с абзаца
+\newcommand{\where}{\par\noindent\hspace*{1.25cm}где}
+
+% п. 6.5.7, 6.6.3: «Рисунок 1 — Наименование», «Таблица 1 — Наименование»;
+% п. 6.5.8, 6.6.3: многострочное наименование — через один межстрочный интервал
+\DeclareCaptionLabelSeparator{gostdash}{~---~}
+\captionsetup{labelsep=gostdash,font=singlespacing}
+
+% п. 6.13: каждая запись содержания — абзац, выровненный влево, номер страницы
+% соединяется с наименованием отточием; полужирный только в заголовках (п. 6.1.1).
+% Вид — как в ЛР № 1 проекта algorithm-analysis: подразделы и пункты сдвинуты
+% под наименование вышестоящей записи, наименования одного уровня начинаются
+% ровно, перед разделами и структурными элементами — небольшой интервал
+\makeatletter
+\renewcommand*\l@section{%
+    \addpenalty\@secpenalty\addvspace{0.25em}%
+    \@dottedtocline{1}{0pt}{1.5em}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{1.5em}{2.3em}}
+\renewcommand*\l@subsubsection{\@dottedtocline{3}{3.8em}{3.2em}}
+\makeatother
+% v2 добавляет к номеру формулы отступы по 1 мм (\tagform@); в ссылках в тексте они не нужны
+\renewcommand{\eqref}[1]{\textup{(\ref{#1})}}
+% длинные адреса в списке источников переносятся после любого символа
+\makeatletter
+\g@addto@macro\UrlBreaks{\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\0\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9}
+\makeatother
+
+\lstdefinelanguage{Swift}{
+  morekeywords={func, let, var, if, else, guard, return, while, for, in,
+    repeat, switch, case, default, break, continue, struct, class, enum,
+    import, nil, true, false, inout, where, private, public, static, self,
+    package},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+}
+\lstset{
+    inputpath=listings,        % фрагменты кода готовит gen-listings.py
+    language=Swift,
+    captionpos=b,
+    escapeinside={\#*}{*)},    % кириллица набирается самим LaTeX (см. gen-listings.py)
+    extendedchars=true,
+    abovecaptionskip=4pt,
+    % в listings под XeLaTeX пробел после кириллицы теряется без этой подстановки
+    % прямая кавычка вместо типографской ” в коде
+    literate={\ }{{\ }}1 {"}{{\textquotedbl}}1
+}
+% v2 запрещает переносы (\hyphenpenalty=10000), а listings переносит длинные
+% строки через \discretionary; внутри листингов запрет снимается
+\makeatletter
+\lst@AddToHook{Init}{\hyphenpenalty=0\exhyphenpenalty=0}
+\makeatother

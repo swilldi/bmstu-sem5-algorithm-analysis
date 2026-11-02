@@ -1,20 +1,18 @@
 //
-//  WinogradMultiplyAddAsigned.swift
+//  WinogradMultiplyShiftAddAssigned.swift
 //  lab02
-//
-//  Created by Dmitriy on 15.10.2026.
 //
 
 import Foundation
 
-package func winogradMultiplyAddAsigned(a: Matrix, b: Matrix) -> Matrix {
+package func winogradMultiplyShiftAddAssigned(a: Matrix, b: Matrix) -> Matrix {
     let n = a.count, m = a[0].count, q = b[0].count
     var c = matrixInit(n, q)
     
     // mulH
     var mulH = Array(repeating: 0, count: n)
     for i in 0..<n {
-        for j in 0..<(m/2) {
+        for j in 0..<(m>>1) {
             mulH[i] += a[i][2*j] * a[i][2*j + 1]
         }
     }
@@ -29,7 +27,7 @@ package func winogradMultiplyAddAsigned(a: Matrix, b: Matrix) -> Matrix {
     // mulV
     var mulV = Array(repeating: 0, count: q)
     for i in 0..<q {
-        for j in 0..<(m/2) {
+        for j in 0..<(m>>1) {
             mulV[i] += b[2*j][i] * b[2*j + 1][i]
         }
     }
@@ -45,7 +43,7 @@ package func winogradMultiplyAddAsigned(a: Matrix, b: Matrix) -> Matrix {
     for i in 0..<n {
         for j in 0..<q {
             c[i][j] = -mulH[i] - mulV[j]
-            for k in 0..<(m/2) {
+            for k in 0..<(m>>1) {
                 c[i][j] += (a[i][2*k] + b[2*k + 1][j]) * (a[i][2*k + 1] + b[2*k][j])
             }
         }

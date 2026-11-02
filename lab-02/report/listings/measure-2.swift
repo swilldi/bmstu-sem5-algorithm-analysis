@@ -1,5 +1,5 @@
-/// #*{\itshape Среднее процессорное время одного умножения}*) (#*{\itshape нс}*))
-func measure(_ algo: MatrixMultiplyFuncition, _ a: Matrix, _ b: Matrix, repeats: Int) -> UInt64 {
+/// #*Среднее процессорное время одного умножения*) (#*нс*))
+func measure(_ algo: MatrixMultiplyFunction, _ a: Matrix, _ b: Matrix, repeats: Int) -> UInt64 {
     var total: UInt64 = 0
     for _ in 0..<repeats {
         let start = cpuTimeNs()
@@ -11,10 +11,10 @@ func measure(_ algo: MatrixMultiplyFuncition, _ a: Matrix, _ b: Matrix, repeats:
     return total / UInt64(repeats)
 }
 
-/// #*{\itshape Выполняет замеры для всех алгоритмов и пишет по}*) CSV-#*{\itshape файлу на алгоритм}*)
+/// #*Выполняет замеры для всех алгоритмов и пишет по*) CSV-#*файлу на алгоритм*)
 func runTimeMeasurements(_ algorithms: [Algorithm]) {
 
-    // times[i][j] #*{\itshape — время алгоритма}*) i #*{\itshape на размере}*) measureSizes[j]
+    // times[i][j] #*— время алгоритма*) i #*на размере*) measureSizes[j]
     var times = Array(repeating: [UInt64](), count: algorithms.count)
 
     print("n".padding(toLength: 6, withPad: " ", startingAt: 0)

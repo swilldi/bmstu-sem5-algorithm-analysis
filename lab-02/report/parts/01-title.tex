@@ -1,4 +1,7 @@
 \thispagestyle{empty}
+% блоки титула занимают всю ширину строки: запас \rightskip из v2 здесь не нужен
+\begingroup
+\setlength{\rightskip}{0pt}
 
 \noindent \begin{minipage}{0.15\textwidth}
 	\includegraphics[width=\linewidth]{image/bmstu-logo.pdf}
@@ -39,3 +42,4 @@
 	\vfill
 	Москва,~\the\year
 \end{center}
+\par\endgroup

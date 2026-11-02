@@ -1,4 +1,4 @@
-package func winogradMultiplyAddAsigned(a: Matrix, b: Matrix) -> Matrix {
+package func winogradMultiplyAddAssigned(a: Matrix, b: Matrix) -> Matrix {
     let n = a.count, m = a[0].count, q = b[0].count
     var c = matrixInit(n, q)
     

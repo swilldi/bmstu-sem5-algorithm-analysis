@@ -11,7 +11,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 ALGOS = ["classic", "winograd", "winograd_shift", "winograd_add_assigned",
          "winograd_shift_add_assigned"]
-HEADER = r"$N$ & {Станд.} & {Виногр.} & {Опт. А} & {Опт. Б} & {Опт. А и Б} \\"
+HEADER = (r"\multirow{2}{*}{$N$} & \multicolumn{1}{C{0.18}|}{\multirow{2}{*}{Стандартный}}"
+          r" & \multicolumn{4}{c|}{Алгоритм Винограда} \\ \cline{3-6}" "\n"
+          r" & & \multicolumn{1}{C{0.18}|}{базовый} & \multicolumn{1}{C{0.18}|}{оптимизация А}"
+          r" & \multicolumn{1}{C{0.18}|}{оптимизация Б} & \multicolumn{1}{C{0.18}|}{оптимизации А и Б} \\")
 
 
 def load(name):
@@ -31,6 +34,7 @@ def table(sizes, caption, label):
 \caption{{{caption}}}
 \label{{{label}}}
 \centering
+\small
 \begin{{tabular}}{{|c|*{{{len(ALGOS)}}}{{S[table-format={FMT}]|}}}}
 \hline
 {HEADER}

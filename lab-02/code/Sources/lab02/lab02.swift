@@ -1,7 +1,7 @@
 import MatrixMultiply
 import Foundation
 
-typealias Algorithm = (algo: MatrixMultiplyFuncition, decs: String, file: String)
+typealias Algorithm = (algo: MatrixMultiplyFunction, desc: String, file: String)
 
 @main
 struct App {
@@ -11,11 +11,11 @@ struct App {
     }
 
     let algorithms: [Algorithm] = [
-        (matrixMultiply, "Классичесое умножение матриц", "classic"),
+        (matrixMultiply, "Классическое умножение матриц", "classic"),
         (winogradMultiply, "Алгоритм Винограда без оптимизаций", "winograd"),
         (winogradMultiplyShift, "Алгоритм Винограда + \">>1\"", "winograd_shift"),
-        (winogradMultiplyAddAsigned, "Алгоритм Винограда + \"+=\"", "winograd_add_assigned"),
-        (winogradMultiplyShiftAddAsigned, "Алгоритм Винограда + \">>1\" + \"+=\"", "winograd_shift_add_assigned")
+        (winogradMultiplyAddAssigned, "Алгоритм Винограда + \"+=\"", "winograd_add_assigned"),
+        (winogradMultiplyShiftAddAssigned, "Алгоритм Винограда + \">>1\" + \"+=\"", "winograd_shift_add_assigned")
     ]
 
     var selectedAlgorithm: Algorithm
@@ -52,10 +52,10 @@ struct App {
     func printMenu() {
         print(
             """
-            Выбранный алгоритм: \(selectedAlgorithm.decs)
+            Выбранный алгоритм: \(selectedAlgorithm.desc)
             Матрица A: \(pathA ?? "не загружена")
             Матрица B: \(pathB ?? "не загружена")
-            --------------------\(String(repeating: "-", count: selectedAlgorithm.decs.count))
+            --------------------\(String(repeating: "-", count: selectedAlgorithm.desc.count))
             1. Выполнить умножение
             2. Выполнить умножение всеми алгоритмами
             3. Показать матрицы
@@ -80,7 +80,7 @@ struct App {
         }
 
         for algorithm in selected {
-            print("\(algorithm.decs):")
+            print("\(algorithm.desc):")
             print(algorithm.algo(a, b))
             print()
         }
@@ -95,7 +95,7 @@ struct App {
 
     mutating func selectAlgorithm() {
         for (i, algorithm) in algorithms.enumerated() {
-            print("\(i + 1). \(algorithm.decs)")
+            print("\(i + 1). \(algorithm.desc)")
         }
         print("> ", terminator: "")
 

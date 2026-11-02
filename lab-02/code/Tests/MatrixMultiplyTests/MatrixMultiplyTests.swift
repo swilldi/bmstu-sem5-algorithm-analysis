@@ -12,8 +12,8 @@ let algorithms: [NamedAlgorithm] = [
     NamedAlgorithm(name: "Классический", algo: matrixMultiply),
     NamedAlgorithm(name: "Виноград", algo: winogradMultiply),
     NamedAlgorithm(name: "Виноград >>1", algo: winogradMultiplyShift),
-    NamedAlgorithm(name: "Виноград +=", algo: winogradMultiplyAddAsigned),
-    NamedAlgorithm(name: "Виноград >>1 и +=", algo: winogradMultiplyShiftAddAsigned),
+    NamedAlgorithm(name: "Виноград +=", algo: winogradMultiplyAddAssigned),
+    NamedAlgorithm(name: "Виноград >>1 и +=", algo: winogradMultiplyShiftAddAssigned),
 ]
 
 @Suite("Умножение матриц")

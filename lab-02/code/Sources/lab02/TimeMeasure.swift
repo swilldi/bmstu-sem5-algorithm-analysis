@@ -29,7 +29,7 @@ func cpuTimeNs() -> UInt64 {
 func blackHole(_ matrix: Matrix) {}
 
 /// Среднее процессорное время одного умножения (нс)
-func measure(_ algo: MatrixMultiplyFuncition, _ a: Matrix, _ b: Matrix, repeats: Int) -> UInt64 {
+func measure(_ algo: MatrixMultiplyFunction, _ a: Matrix, _ b: Matrix, repeats: Int) -> UInt64 {
     var total: UInt64 = 0
     for _ in 0..<repeats {
         let start = cpuTimeNs()

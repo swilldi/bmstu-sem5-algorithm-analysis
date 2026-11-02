@@ -1,4 +1,4 @@
-package typealias MatrixMultiplyFuncition = (Matrix, Matrix) -> Matrix
+package typealias MatrixMultiplyFunction = (Matrix, Matrix) -> Matrix
 package typealias Matrix = [[Int]]
 
 package func matrixInit(_ n: Int, _ m: Int) -> Matrix {
