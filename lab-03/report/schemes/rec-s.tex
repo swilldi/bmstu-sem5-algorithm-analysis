@@ -1,0 +1,18 @@
+\begin{tikzpicture}[x=1mm,y=-1mm]
+\node[terminator] (start) at (0,0) {$S(i,j,c)$};
+\node[decision] (b9) at (0,24) {$c>9$ или $c>j$};
+\node[process] (b10) at (-38,50) {$t=0$};
+\node[predefined] (b11) at (38,50) {$a=F(i-1,j-c)$};
+\node[predefined] (b12) at (38,68) {$b=S(i,j,c+1)$};
+\node[process] (b13) at (38,86) {$t=a+b$};
+\node[terminator] (end) at (0,116) {Возврат: $t$};
+\draw[flow] (start) -- (b9);
+\draw[flow] (b9.west) -- node[lbl,above] {да} (-38,24) -- (b10.north);
+\draw[flow] (b9.east) -- node[lbl,above] {нет} (38,24) -- (b11.north);
+\draw[flow] (b11) -- (b12);
+\draw[flow] (b12) -- (b13);
+% слияние линий в смещённых точках (ГОСТ 19.701-90, п. 4.2.3)
+\draw (b10.south) |- (0,97);
+\draw[flow] (b13.south) |- (0,102);
+\draw[flow] (0,97) -- (end.north);
+\end{tikzpicture}

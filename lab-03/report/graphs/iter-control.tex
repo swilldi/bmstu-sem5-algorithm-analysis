@@ -1,0 +1,19 @@
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[gv] (n2) at (0,0) {2};
+\node[gv] (n3) at (0,-1.5) {3};
+\node[gv] (n4) at (0,-3) {4};
+\node[gv] (n5) at (0,-4.5) {5};
+\node[gv] (n6) at (0,-6) {6};
+\node[gv] (n7) at (0,-7.5) {7};
+\node[gv] (n8) at (3,-3) {8};
+\draw[flow] (n2) -- (n3);
+\draw[flow] (n3) -- (n4);
+\draw[flow] (n4) -- (n5);
+\draw[flow] (n4) -- (n8);
+\draw[flow] (n5) -- (n6);
+\draw[flow] (n6) -- (n7);
+\draw[flow] (n7.east) to[out=0,in=0,looseness=1.6] (n6.east);
+\draw[flow] (n6.west) to[out=180,in=180,looseness=1.6] (n5.west);
+\draw[flow] (n5.east) to[out=0,in=-60,looseness=1.4] (n4.south east);
+\end{tikzpicture}
+

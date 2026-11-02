@@ -1,0 +1,16 @@
+\begin{tikzpicture}[node distance=5mm]
+\node[terminator] (start) {Начало};
+\node[process,below=of start] (b2) {Создать таблицу $F$ размером $(k+1)\times(s+1)$, заполненную нулями};
+\node[process,below=of b2] (b3) {$F[0][0]=1$};
+\node[loop start,below=of b3] (b4) {Цикл I\\$i$ от 1 до $k$};
+\node[loop start,below=of b4] (b5) {Цикл J\\$j$ от 1 до $s$};
+\node[loop start,below=of b5] (b6) {Цикл C\\$c$ от 0 до $\min(9,j)$};
+\node[process,below=of b6] (b7) {$F[i][j]=F[i][j]+F[i-1][j-c]$};
+\node[loop end,below=of b7] (e6) {Цикл C};
+\node[loop end,below=of e6] (e5) {Цикл J};
+\node[loop end,below=of e5] (e4) {Цикл I};
+\node[process,below=of e4] (b8) {Вернуть $F[k][s]$};
+\node[terminator,below=of b8] (end) {Конец};
+\foreach \a/\b in {start/b2,b2/b3,b3/b4,b4/b5,b5/b6,b6/b7,b7/e6,e6/e5,e5/e4,e4/b8,b8/end}
+    \draw[flow] (\a) -- (\b);
+\end{tikzpicture}

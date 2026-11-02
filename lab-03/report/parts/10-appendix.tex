@@ -1,0 +1,27 @@
+\clearpage
+\section*{ПРИЛОЖЕНИЕ А}
+\phantomsection
+\addcontentsline{toc}{section}{ПРИЛОЖЕНИЕ А}
+\begin{center}
+    \large\bfseries Исходный код реализаций
+\end{center}
+
+\setcounter{lstlisting}{0}
+\renewcommand{\thelstlisting}{А.\arabic{lstlisting}}
+
+\noindent\begin{minipage}{\dimexpr\linewidth-0.5mm\relax}
+\lstinputlisting[language=Swift,caption={Реализация нерекурсивного алгоритма},label={lst:impl-iter}]{code/iterative.swift}
+\end{minipage}
+
+\noindent\begin{minipage}{\dimexpr\linewidth-0.5mm\relax}
+\lstinputlisting[language=Swift,caption={Реализация рекурсивного алгоритма},label={lst:impl-rec}]{code/recursive.swift}
+\end{minipage}
+
+\noindent\begin{minipage}{\dimexpr\linewidth-0.5mm\relax}
+\lstinputlisting[language=Swift,caption={Формирование и вывод таблицы значений},label={lst:impl-table}]{code/table.swift}
+\end{minipage}
+
+\noindent\begin{minipage}{\dimexpr\linewidth-0.5mm\relax}
+\lstinputlisting[language=Swift,caption={Функциональные тесты},label={lst:tests}]{code/tests.swift}
+\end{minipage}
+

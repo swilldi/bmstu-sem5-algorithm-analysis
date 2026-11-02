@@ -1,0 +1,24 @@
+\begin{tikzpicture}[x=1mm,y=-1mm]
+\node[terminator] (start) at (0,0) {$F(i,j)$};
+\node[sdecision] (b1) at (0,22) {$i=0$};
+\node[sdecision] (b2) at (-40,44) {$j=0$};
+\node[sdecision] (b5) at (40,44) {$j=0$};
+\node[sprocess] (b3) at (-60,66) {$r=1$};
+\node[sprocess] (b4) at (-20,66) {$r=0$};
+\node[sprocess] (b6) at (20,66) {$r=0$};
+\node[spredefined] (b7) at (60,66) {$r=S(i,j,0)$};
+\node[terminator] (end) at (0,104) {Возврат: $r$};
+\draw[flow] (start) -- (b1);
+\draw[flow] (b1.west) -- node[lbl,above] {да} (-40,22) -- (b2.north);
+\draw[flow] (b1.east) -- node[lbl,above] {нет} (40,22) -- (b5.north);
+\draw[flow] (b2.west) -- (-60,44) -- node[lbl,left,pos=0.35] {да} (b3.north);
+\draw[flow] (b2.east) -- (-20,44) -- node[lbl,right,pos=0.35] {нет} (b4.north);
+\draw[flow] (b5.west) -- (20,44) -- node[lbl,left,pos=0.35] {да} (b6.north);
+\draw[flow] (b5.east) -- (60,44) -- node[lbl,right,pos=0.35] {нет} (b7.north);
+% слияние линий в смещённых точках (ГОСТ 19.701-90, п. 4.2.3)
+\draw (b3.south) |- (0,77);
+\draw[flow] (b4.south) |- (0,81);
+\draw[flow] (b6.south) |- (0,85);
+\draw[flow] (b7.south) |- (0,89);
+\draw[flow] (0,77) -- (end.north);
+\end{tikzpicture}

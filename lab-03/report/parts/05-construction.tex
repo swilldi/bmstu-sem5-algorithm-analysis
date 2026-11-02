@@ -1,0 +1,102 @@
+\clearpage
+\section{Конструкторская часть}
+
+\subsection{Требования к программе}
+
+К программе предъявляются следующие требования:
+\begin{itemize}
+    \item реализации алгоритмов принимают натуральные числа $s$ и $k$, \mbox{$k\le19$},
+    и возвращают количество $k$-значных натуральных чисел с суммой цифр $s$;
+    \item рекурсивная реализация не использует циклы, массивы, строки и срезы;
+    \item программа выводит таблицу значений $F(i,j)$ для \mbox{$0\le i\le k$},
+    \mbox{$0\le j\le s$} и результаты обоих алгоритмов.
+\end{itemize}
+
+\subsection{Нерекурсивный алгоритм}
+
+Нерекурсивный алгоритм заполняет таблицу значений $F$ по формуле~\eqref{eq:f}:
+строки~--- сверху вниз по возрастанию $i$, ячейки строки~--- слева направо
+по возрастанию $j$. Алгоритм получает числа $k$ и $s$ и возвращает $F[k][s]$.
+Псевдокод алгоритма приведён в листинге~\ref{lst:iter} «Псевдокод
+нерекурсивного алгоритма», схема показана на рисунке~\ref{fig:scheme-iter}.
+
+\bigskip
+\noindent\begin{minipage}{\dimexpr\linewidth-0.5mm\relax}
+\begin{lstlisting}[language=Python,caption={Псевдокод нерекурсивного алгоритма},label={lst:iter}]
+def count(k, s):
+    F = [[0] * (s + 1) for _ in range(k + 1)]
+    F[0][0] = 1
+    for i in range(1, k + 1):
+        for j in range(1, s + 1):
+            for c in range(0, min(9, j) + 1):
+                F[i][j] += F[i - 1][j - c]
+    return F[k][s]
+\end{lstlisting}
+\end{minipage}
+\medskip
+
+\begin{figure}[H]
+    \centering
+    \input{schemes/iter.tex}
+    \caption{Схема нерекурсивного алгоритма}
+    \label{fig:scheme-iter}
+\end{figure}
+
+\subsection{Рекурсивный алгоритм}
+
+Рекурсивный алгоритм вычисляет $F(k,s)$ по формулам~\eqref{eq:f}
+и~\eqref{eq:s} без сохранения промежуточных значений: перебор последней цифры
+выполняется рекурсивной функцией $S$. Схемы функций $F$ и $S$ показаны
+на рисунках~\ref{fig:scheme-f} и~\ref{fig:scheme-s}, псевдокод обеих функций
+приведён в листинге~\ref{lst:rec} «Псевдокод рекурсивного алгоритма».
+
+\begin{figure}[H]
+    \centering
+    \input{schemes/rec-f.tex}
+    \caption{Схема алгоритма вычисления функции $F$}
+    \label{fig:scheme-f}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \input{schemes/rec-s.tex}
+    \caption{Схема алгоритма вычисления функции $S$}
+    \label{fig:scheme-s}
+\end{figure}
+
+\bigskip
+\noindent\begin{minipage}{\dimexpr\linewidth-0.5mm\relax}
+\begin{lstlisting}[language=Python,caption={Псевдокод рекурсивного алгоритма},label={lst:rec}]
+def F(i, j):
+    if i == 0:
+        if j == 0:
+            r = 1
+        else:
+            r = 0
+    elif j == 0:
+        r = 0
+    else:
+        r = S(i, j, 0)
+    return r
+def S(i, j, c):
+    if c > 9 or c > j:
+        t = 0
+    else:
+        a = F(i - 1, j - c)
+        b = S(i, j, c + 1)
+        t = a + b
+    return t
+\end{lstlisting}
+\end{minipage}
+\medskip
+
+Вызов функции обозначен на схемах символом «Предопределённый процесс»
+(строки 10, 16 и 17 листинга~\ref{lst:rec}). Выполнение вызова передаёт
+аргументы вызываемой функции, а результат, возвращённый вызванной функцией
+в строке 11 или 19, присваивается переменной $r$, $a$ или $b$. Повторные вызовы $F$
+с одинаковыми аргументами вычисляются заново, поскольку сохранять результаты
+в массиве запрещено.
+
+В графовых моделях исследовательской части оператор обозначается номером
+строки листинга~\ref{lst:iter} или~\ref{lst:rec}. Строки с заголовками
+функций и строки \texttt{else} операторами не считаются.

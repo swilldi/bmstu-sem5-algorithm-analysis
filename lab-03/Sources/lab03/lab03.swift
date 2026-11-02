@@ -40,6 +40,8 @@ struct App {
         let resultMatrix = countNumbersBySumDigitsMatrix(sumTarget: s, digitsCount: k)
         printMatrixOfCounts(resultMatrix)
         print("Количество \(k)-значных чисел, сумма цифр которых \(s) -- \(resultMatrix[k][s])")
+        let recursiveResult = countNumbersBySumDigitsRecursive(sumTarget: s, digitsCount: k)
+        print("Рекурсивный алгоритм -- \(recursiveResult)")
     }
     
     func readNumer(_ msg: String?) -> Int? {

@@ -1,0 +1,31 @@
+\begin{tikzpicture}[x=1mm,y=-1mm]
+\node[histnarrow] (e0) at (-62,0) {2\\[-2pt]\footnotesize F = 0};
+\node[histnarrow] (e1) at (-22,0) {3\\[-2pt]\footnotesize F[0][0]};
+\node[histnarrow] (e2) at (60,0) {4\\[-2pt]\footnotesize i = 1};
+\node[histnarrow] (e3) at (8,0) {5\\[-2pt]\footnotesize j = 1};
+\node[histnarrow] (e4) at (20,24) {6\\[-2pt]\footnotesize c = 0};
+\node[histnarrow] (e5) at (-30,48) {7\\[-2pt]\footnotesize F[1][1]};
+\node[histnarrow] (e6) at (36,48) {6\\[-2pt]\footnotesize c = 1};
+\node[histnarrow] (e7) at (8,72) {7\\[-2pt]\footnotesize F[1][1]};
+\node[histnarrow] (e8) at (60,72) {6\\[-2pt]\footnotesize c = 2};
+\node[histnarrow] (e9) at (-30,24) {5\\[-2pt]\footnotesize j = 2};
+\node[histnarrow] (e10) at (66,24) {4\\[-2pt]\footnotesize i = 2};
+\node[histnarrow] (e11) at (8,96) {8\\[-2pt]\footnotesize F[1][1]};
+\draw[flow] (e0) -- (e5);
+\draw[flow] (e1) -- (e7);
+\draw[flow] (e2) to[bend right=22] (e5);
+\draw[flow] (e2) to[bend right=12] (e7);
+\draw[flow] (e2) -- (e10);
+\draw[flow] (e3) -- (e4);
+\draw[flow] (e3) -- (e5);
+\draw[flow] (e3) to[bend left=42] (e6);
+\draw[flow] (e3) -- (e7);
+\draw[flow] (e3) to[bend left=22] (e8);
+\draw[flow] (e3) -- (e9);
+\draw[flow] (e4) -- (e5);
+\draw[flow] (e4) -- (e6);
+\draw[flow] (e5) -- (e7);
+\draw[flow] (e6) -- (e7);
+\draw[flow] (e6) -- (e8);
+\draw[flow] (e7) -- (e11);
+\end{tikzpicture}
