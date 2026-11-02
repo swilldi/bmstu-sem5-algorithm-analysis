@@ -24,6 +24,10 @@
 \usepackage{lastpage}
 
 \usepackage{nicematrix}
+
+% числа в таблицах выравниваются по десятичной запятой (столбцы типа S)
+\usepackage{siunitx}
+\sisetup{output-decimal-marker={,}, group-separator={\,}, group-minimum-digits=4}
 % столбец заданной доли ширины строки, центрированный по обеим осям
 % \hspace{0pt} разрешает перенос первого слова в ячейке
 \newcolumntype{C}[1]{>{\centering\arraybackslash\hspace{0pt}}m{\dimexpr#1\linewidth-2\tabcolsep\relax}}
@@ -142,11 +146,11 @@
 	showtabs=false,             % показывать или нет табуляцию в строках
 	frame=single,              % рисовать рамку вокруг кода
 	tabsize=2,                 % размер табуляции по умолчанию равен 2 пробелам
-	captionpos=t,              % позиция заголовка вверху [t] или внизу [b] 
+	captionpos=b,              % подпись листинга снизу, как у рисунка
 	breaklines=true,           % автоматически переносить строки (да\нет)
 	breakatwhitespace=false, % переносить строки только если есть пробел
 	escapeinside={\#*}{*)},   % если нужно добавить комментарии в коде
-	abovecaptionskip=-5pt,
+	abovecaptionskip=4pt,
 	extendedchars=true,
 	% в listings 1.11b под XeLaTeX пробел после кириллицы теряется без этой подстановки;
 	% строки до firstline с кириллицей «протекают» в листинг, поэтому фрагменты кода

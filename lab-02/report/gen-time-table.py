@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Строит parts/time-table.tex из ../TimeTestResult/*.csv (время в мс).
 
-Две таблицы: для чётных и для нечётных размеров матриц.
+Две таблицы: для чётных и для нечётных размеров матриц. Числа выравниваются\nпо десятичной запятой (столбцы S пакета siunitx).
 
 Использование: python3 gen-time-table.py
 """
@@ -11,7 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 ALGOS = ["classic", "winograd", "winograd_shift", "winograd_add_assigned",
          "winograd_shift_add_assigned"]
-HEADER = r"$N$ & Станд. & Виногр. & Опт. А & Опт. Б & Опт. А и Б \\"
+HEADER = r"$N$ & {Станд.} & {Виногр.} & {Опт. А} & {Опт. Б} & {Опт. А и Б} \\"
 
 
 def load(name):
@@ -20,7 +20,8 @@ def load(name):
 
 
 def ms(ns):
-    return f"{ns / 1e6:.2f}".replace(".", "{,}")
+    # точка-разделитель: siunitx выводит запятую и выравнивает по ней
+    return f"{ns / 1e6:.2f}"
 
 
 def table(sizes, caption, label):
@@ -30,7 +31,7 @@ def table(sizes, caption, label):
 \caption{{{caption}}}
 \label{{{label}}}
 \centering
-\begin{{tabular}}{{|c|c|c|c|c|c|}}
+\begin{{tabular}}{{|c|*{{{len(ALGOS)}}}{{S[table-format={FMT}]|}}}}
 \hline
 {HEADER}
 \hline
@@ -41,6 +42,8 @@ def table(sizes, caption, label):
 
 
 data = [load(a) for a in ALGOS]
+# формат столбцов S: число цифр целой части по максимальному значению
+FMT = f"{len(str(int(max(max(d.values()) for d in data) / 1e6)))}.2"
 sizes = sorted(data[0])
 even = [n for n in sizes if n % 2 == 0]
 odd = [n for n in sizes if n % 2 == 1]

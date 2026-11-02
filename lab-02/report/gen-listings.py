@@ -5,7 +5,7 @@
 `#if DEBUG ... #endif`. Длинный файл режется на части перед строками,
 начинающимися с заданных маркеров. Для каждого листинга пишется
 listings/<имя>.tex: части в minipage не разрываются между страницами,
-первая идёт с подписью, следующие — с подписью «Продолжение листинга».
+подпись снизу: «Листинг N — …, лист 1», затем «Листинг N, лист K».
 
 listings 1.11b под XeLaTeX выводит символы кириллицы в обход своего буфера:
 они попадают в листинг из пропускаемых строк (firstline/linerange) и меняются
@@ -129,10 +129,14 @@ for name, (src, caption, markers) in LISTINGS.items():
         file = f"{name}.swift" if len(parts) == 1 else f"{name}-{i}.swift"
         (OUT / file).write_text("\n".join(escape_cyrillic(l) for l in part) + "\n")
         print(f"listings/{file}: {len(part)} строк")
-        if i == 1:
+        # подпись снизу; листинг на нескольких страницах оформляется как рисунок
+        # на нескольких листах: «Листинг N — …, лист 1», далее «Листинг N, лист K»
+        if len(parts) == 1:
             opts = f"caption={{{caption}}}, label={{lst:{name}}}"
+        elif i == 1:
+            opts = f"caption={{{caption}, лист 1}}, label={{lst:{name}}}"
         else:
-            opts = f"title={{Продолжение листинга~\\ref{{lst:{name}}}}}"
+            opts = f"title={{\\lstlistingname~\\ref{{lst:{name}}}, лист {i}}}"
         blocks.append("\\noindent\\begin{minipage}{\\linewidth}\n"
                       f"\\lstinputlisting[{opts}]{{{file}}}\n"
                       "\\end{minipage}\n")

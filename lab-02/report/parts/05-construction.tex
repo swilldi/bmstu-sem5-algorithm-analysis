@@ -20,7 +20,7 @@
 	\item в режиме замеров программа для каждого линейного размера $N$ из набора $10, 20, \ldots, 200$ (чётные) и $11, 21, \ldots, 201$ (нечётные) генерирует случайные квадратные матрицы, выполняет их умножение каждым алгоритмом, выводит среднее процессорное время на экран и сохраняет результаты в файлы формата CSV, по одному на алгоритм.
 \end{enumerate}
 
-\section{Разработка алгоритмов}
+\section{Описание алгоритмов}
 Для каждого алгоритма определены:
 \begin{itemize}
 	\item $a$~--- матрица $A$ размера $n \times m$;
@@ -34,40 +34,33 @@
 	\item $mulV$~--- массив из $q$ элементов, вычисляемый по формуле~\eqref{eq:mulV}.
 \end{itemize}
 
-% Схемы выгружаются из algo.drawio в image/algo/<алгоритм>/<лист>.pdf скриптом export-algo.sh
+% Схемы выгружаются из algo.drawio в image/algo/<алгоритм>/<лист>.pdf скриптом export-algo.sh;
+% на листе 1 алгоритма Винограда две колонки рядом, на листе 2 — третья
 
 \subsection{Стандартный алгоритм умножения матриц}
 Схема стандартного алгоритма умножения матриц приведена на рисунке~\ref{img:standard}.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.82]{image/algo/standard/1.pdf}
+	\includegraphics[scale=0.85]{image/algo/standard/1.pdf}
 	\caption{Схема стандартного алгоритма умножения матриц}
 	\label{img:standard}
 \end{figure}
 
 \subsection{Алгоритм Винограда}
-Алгоритм состоит из четырёх этапов: вычисление массива $mulH$, вычисление массива $mulV$, вычисление элементов результата по формуле~\eqref{eq:wino-c} и добавление слагаемого $a_{i,m-1} \cdot b_{m-1,j}$ при нечётном $m$. Схема алгоритма Винограда приведена на рисунках~\ref{img:winograd-1}--\ref{img:winograd-3}.
+Алгоритм состоит из четырёх этапов: вычисление массива $mulH$, вычисление массива $mulV$, вычисление элементов результата по формуле~\eqref{eq:wino-c} и добавление слагаемого $a_{i,m-1} \cdot b_{m-1,j}$ при нечётном $m$. Схема алгоритма Винограда приведена на рисунке~\ref{img:winograd-1}.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.82]{image/algo/winograd/1.pdf}
+	\includegraphics[scale=0.85]{image/algo/winograd/1.pdf}
 	\caption{Схема алгоритма Винограда, лист 1}
 	\label{img:winograd-1}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.82]{image/algo/winograd/2.pdf}
-	\caption{Схема алгоритма Винограда, лист 2}
-	\label{img:winograd-2}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.82]{image/algo/winograd/3.pdf}
-	\caption{Схема алгоритма Винограда, лист 3}
-	\label{img:winograd-3}
+	\includegraphics[scale=0.85]{image/algo/winograd/2.pdf}
+	\caption*{Рисунок~\ref{img:winograd-1}, лист 2}
 \end{figure}
 
 \subsection{Оптимизированный алгоритм Винограда}
@@ -80,73 +73,49 @@
 Оптимизации применяются к алгоритму Винограда как по отдельности, так и совместно, что даёт три оптимизированные реализации.
 
 \subsubsection{Реализация с оптимизацией А}
-В данной реализации граница циклов по индексу пары $m / 2$ вычисляется побитовым сдвигом вправо $m \gg 1$: для неотрицательного целого $m$ оба выражения дают одинаковый результат. Сдвиг применяется во всех трёх циклах по индексу пары: при вычислении $mulH$, $mulV$ и в основном цикле. Схема алгоритма приведена на рисунках~\ref{img:winograd-shift-1}--\ref{img:winograd-shift-3}.
+В данной реализации граница циклов по индексу пары $m / 2$ вычисляется побитовым сдвигом вправо $m \gg 1$: для неотрицательного целого $m$ оба выражения дают одинаковый результат. Сдвиг применяется во всех трёх циклах по индексу пары: при вычислении $mulH$, $mulV$ и в основном цикле. Схема алгоритма приведена на рисунке~\ref{img:winograd-shift-1}.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.82]{image/algo/winograd-shift/1.pdf}
+	\includegraphics[scale=0.85]{image/algo/winograd-shift/1.pdf}
 	\caption{Схема алгоритма Винограда с оптимизацией А, лист 1}
 	\label{img:winograd-shift-1}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.82]{image/algo/winograd-shift/2.pdf}
-	\caption{Схема алгоритма Винограда с оптимизацией А, лист 2}
-	\label{img:winograd-shift-2}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.82]{image/algo/winograd-shift/3.pdf}
-	\caption{Схема алгоритма Винограда с оптимизацией А, лист 3}
-	\label{img:winograd-shift-3}
+	\includegraphics[scale=0.85]{image/algo/winograd-shift/2.pdf}
+	\caption*{Рисунок~\ref{img:winograd-shift-1}, лист 2}
 \end{figure}
 
 \subsubsection{Реализация с оптимизацией Б}
-В данной реализации все накопления сумм вида $x = x + y$ заменены составным оператором присваивания $x \mathrel{+}= y$: при вычислении $mulH$ и $mulV$, в основном цикле и при добавлении слагаемого для нечётного $m$. Это избавляет от повторного обращения к накапливаемому элементу массива в правой части присваивания. Схема алгоритма приведена на рисунках~\ref{img:winograd-add-1}--\ref{img:winograd-add-3}.
+В данной реализации все накопления сумм вида $x = x + y$ заменены составным оператором присваивания $x \mathrel{+}= y$: при вычислении $mulH$ и $mulV$, в основном цикле и при добавлении слагаемого для нечётного $m$. Это избавляет от повторного обращения к накапливаемому элементу массива в правой части присваивания. Схема алгоритма приведена на рисунке~\ref{img:winograd-add-1}.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.82]{image/algo/winograd-add/1.pdf}
+	\includegraphics[scale=0.85]{image/algo/winograd-add/1.pdf}
 	\caption{Схема алгоритма Винограда с оптимизацией Б, лист 1}
 	\label{img:winograd-add-1}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.82]{image/algo/winograd-add/2.pdf}
-	\caption{Схема алгоритма Винограда с оптимизацией Б, лист 2}
-	\label{img:winograd-add-2}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.82]{image/algo/winograd-add/3.pdf}
-	\caption{Схема алгоритма Винограда с оптимизацией Б, лист 3}
-	\label{img:winograd-add-3}
+	\includegraphics[scale=0.85]{image/algo/winograd-add/2.pdf}
+	\caption*{Рисунок~\ref{img:winograd-add-1}, лист 2}
 \end{figure}
 
 \subsubsection{Реализация с оптимизациями А и Б}
-В данной реализации обе оптимизации применяются совместно: граница циклов по индексу пары вычисляется побитовым сдвигом $m \gg 1$, а все накопления сумм выполняются составным оператором присваивания $x \mathrel{+}= y$. Схема алгоритма приведена на рисунках~\ref{img:winograd-shift-add-1}--\ref{img:winograd-shift-add-3}.
+В данной реализации обе оптимизации применяются совместно: граница циклов по индексу пары вычисляется побитовым сдвигом $m \gg 1$, а все накопления сумм выполняются составным оператором присваивания $x \mathrel{+}= y$. Схема алгоритма приведена на рисунке~\ref{img:winograd-shift-add-1}.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.82]{image/algo/winograd-shift-add/1.pdf}
+	\includegraphics[scale=0.85]{image/algo/winograd-shift-add/1.pdf}
 	\caption{Схема алгоритма Винограда с оптимизациями А и Б, лист 1}
 	\label{img:winograd-shift-add-1}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.82]{image/algo/winograd-shift-add/2.pdf}
-	\caption{Схема алгоритма Винограда с оптимизациями А и Б, лист 2}
-	\label{img:winograd-shift-add-2}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.82]{image/algo/winograd-shift-add/3.pdf}
-	\caption{Схема алгоритма Винограда с оптимизациями А и Б, лист 3}
-	\label{img:winograd-shift-add-3}
+	\includegraphics[scale=0.85]{image/algo/winograd-shift-add/2.pdf}
+	\caption*{Рисунок~\ref{img:winograd-shift-add-1}, лист 2}
 \end{figure}
